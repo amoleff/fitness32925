@@ -21,13 +21,27 @@
             <a href="#contact">Contact</a>
         </div>
         <button class="cta-button">Join Now</button>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#home">Home</a>
+            <a href="#classes">Classes</a>
+            <a href="#trainers">Trainers</a>
+            <a href="#membership">Membership</a>
+            <a href="#contact">Contact</a>
+            <button class="cta-button">Join Now</button>
+        </div>
+    </div>
 
     <header class="hero">
         <div class="hero-content">
             <h1>Your Journey Starts Here</h1>
             <p>Where everyone belongs, and everyone succeeds.</p>
-            <button class="cta-button">Start Free Trial</button>
+            <button class="cta-button" onclick="openMembershipModal()">Start Free Trial</button>
         </div>
     </header>
 
@@ -56,16 +70,19 @@
                 <img src="https://source.unsplash.com/random/400x300/?yoga" alt="Yoga">
                 <h3>Yoga Flow</h3>
                 <p>Find your inner peace with our guided yoga sessions</p>
+                <button class="book-button" onclick="openBookingModal('Yoga Flow')">Book Now</button>
             </div>
             <div class="class-card">
                 <img src="https://source.unsplash.com/random/400x300/?cardio" alt="Cardio">
                 <h3>Cardio Blast</h3>
                 <p>High-energy cardio workouts to boost your endurance</p>
+                <button class="book-button" onclick="openBookingModal('Cardio Blast')">Book Now</button>
             </div>
             <div class="class-card">
                 <img src="https://source.unsplash.com/random/400x300/?strength" alt="Strength">
                 <h3>Strength Training</h3>
                 <p>Build muscle and increase your power</p>
+                <button class="book-button" onclick="openBookingModal('Strength Training')">Book Now</button>
             </div>
         </div>
     </section>
@@ -81,7 +98,7 @@
                     <li>Basic equipment usage</li>
                     <li>Locker room access</li>
                 </ul>
-                <button class="cta-button">Select Plan</button>
+                <button class="cta-button" onclick="selectPlan('Basic')">Select Plan</button>
             </div>
             <div class="pricing-card featured">
                 <h3>Premium</h3>
@@ -91,7 +108,7 @@
                     <li>Group classes</li>
                     <li>Personal trainer (2x/month)</li>
                 </ul>
-                <button class="cta-button">Select Plan</button>
+                <button class="cta-button" onclick="selectPlan('Premium')">Select Plan</button>
             </div>
             <div class="pricing-card">
                 <h3>Elite</h3>
@@ -101,10 +118,92 @@
                     <li>Unlimited personal training</li>
                     <li>Nutrition consultation</li>
                 </ul>
-                <button class="cta-button">Select Plan</button>
+                <button class="cta-button" onclick="selectPlan('Elite')">Select Plan</button>
             </div>
         </div>
     </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="membershipModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Join FitLife</h2>
+            <form id="membershipForm" onsubmit="handleMembershipSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="memberName" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="memberEmail" required placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="memberPhone" required placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <select id="selectedPlan" required>
+                        <option value="">Select a Plan</option>
+                        <option value="Basic">Basic Plan</option>
+                        <option value="Premium">Premium Plan</option>
+                        <option value="Elite">Elite Plan</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button">Complete Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book a Class</h2>
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="bookingName" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="bookingEmail" required placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <select id="classType" required>
+                        <option value="">Select Class Type</option>
+                        <option value="Yoga Flow">Yoga Flow</option>
+                        <option value="Cardio Blast">Cardio Blast</option>
+                        <option value="Strength Training">Strength Training</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="classDate" required>
+                </div>
+                <div class="form-group">
+                    <select id="classTime" required>
+                        <option value="">Select Time</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="14:00">2:00 PM</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
